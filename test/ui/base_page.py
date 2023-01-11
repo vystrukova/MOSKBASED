@@ -29,7 +29,7 @@ class BasePage:
             EC.element_to_be_clickable(locator)).click()
         return self
 
-    def click_when_loaded(self, locator, timeout_for_click=5, timeout_for_wait=3,
+    def click_when_loaded(self, locator, timeout_for_click=2, timeout_for_wait=3,
                           retries_spinner=2, retries_no_spinner=4):
         """Кликает на выбранный элемент после того, как со страницы исчезнет спиннер загрузки."""
         if self.page_is_loaded(timeout_for_wait, retries_spinner, retries_no_spinner):
@@ -38,7 +38,7 @@ class BasePage:
         else:
             raise TimeoutException
 
-    def key_down(self):
+    def key_down(self, element=None):
         ActionChains(driver).key_down(Keys.DOWN)
         ActionChains(driver).key_down(Keys.ENTER)
 
