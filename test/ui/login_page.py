@@ -1,51 +1,73 @@
 import time
 from selenium.webdriver import Chrome
-from ui.locators import BasePageLocators
-from ui.locators import LoginPageLocators
-from ui.locators import MainPageLocators
-from ui.base_page import BasePage
-import ui.main_page
+from locators import LoginPageLocators
+from base_page import BasePage
 import info
 
 
 class LoginPage(BasePage):
-    #url = "https://mosedo.release133.sedmsk81/"
-    #locators = LoginPageLocators
 
     def __init__(self, browser):
         self.locators = LoginPageLocators
         self.browser: Chrome = browser
-        self.url = "https://mosedo.release133.sedmsk81/"
+        self.url = info.base_url
         super().__init__(browser)
 
-    """Открывает страницу в браузере"""
     def open(self):
         self.browser.get(self.url)
         return self
 
-    """Проверяем что страница открыта"""
-    def page_is_open(self, timeout):
-        locator = self.locators.LOGIN_BUTTON
-        for _ in range(timeout):
-            if self.is_visible(locator, timeout):
-                return True
-            time.sleep(0.5)
+    def main_page_is_open(self, timeout):
+        locator = self.locators.LOGO_TEXT
+        return self.wait_for_visible(locator, timeout)
+
+    def organization_field_located(self, timeout):
+        locator = self.locators.ORGANIZATION_FIELD
+        return self.wait_for_visible(locator, timeout)
+
+    def send_organization(self, login_text=info.organization):
+        locator = self.locators.ORGANIZATION_FIELD
+        if self.organization_field_located(timeout=1):
+            self.send_keys(locator, login_text)
+            return True
         return False
 
-    """Авторизация"""
-    def login(self, organization=info.organization, login=info.login, password=info.password):
-        self.browser.get(self.url)
-        self.send_keys(self.locators.ORGANIZATION_FIELD, organization)
-        #self.click(self.locators.ORGANIZATION_CHOICE, timeout=1)
-        self.click_when_loaded(self.locators.ORGANIZATION_CHOICE, timeout_for_click=2, timeout_for_wait=3, retries_spinner=2, retries_no_spinner=1)
-        #self.key_down()
-        self.send_keys(self.locators.LOGIN_FIELD, login)
-        self.click_when_loaded(self.locators.LOGIN_CHOICE, timeout_for_click=2, timeout_for_wait=3, retries_spinner=2, retries_no_spinner=1)
-        #self.click(self.locators.LOGIN_CHOICE, timeout=1)
-        #self.key_down()
-        self.send_keys(self.locators.PASSWORD_FIELD, password)
-        self.click(self.locators.LOGIN_BUTTON, timeout=1)
-        self.page_is_loaded(4, 1, 4)
-        return ui.main_page.MainPage(browser=self.browser)
+    def click_organization(self, timeout):
+        locator = self.locators.ORGANIZATION_CHOICE
+        return self.click_visible_element(locator, timeout)
+
+    def login_field_located(self, timeout):
+        locator = self.locators.LOGIN_FIELD
+        return self.wait_for_visible(locator, timeout)
+
+    def send_login(self, login_text=info.login):
+        locator = self.locators.LOGIN_FIELD
+        if self.login_field_located(timeout=1):
+            self.send_keys(locator, login_text)
+            return True
+        return False
+
+    def click_login(self, timeout):
+        locator = self.locators.LOGIN_CHOICE
+        return self.click_visible_element(locator, timeout)
+
+    def password_field_located(self, timeout):
+        locator = self.locators.PASSWORD_FIELD
+        return self.wait_for_visible(locator, timeout)
+
+    def send_password(self, password_text=info.password_api):
+        locator = self.locators.PASSWORD_FIELD
+        if self.password_field_located(timeout=1):
+            self.send_keys(locator, password_text)
+            return True
+        return False
+
+    def click_login_button(self, timeout):
+        locator = self.locators.LOGIN_BUTTON
+        return self.click_visible_element(locator, timeout)
+
+    def logo_located(self, timeout):
+        locator = self.locators.LOGO_LOCATED
+        return self.wait_for_visible(locator, timeout)
 
 

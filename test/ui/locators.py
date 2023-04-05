@@ -8,17 +8,16 @@ class BasePageLocators:
 
 class LoginPageLocators(BasePageLocators):
     ORGANIZATION_FIELD = (By.XPATH, "//input[@id='organizations']")
-    #ORGANIZATION_CHOICE = (By.XPATH, '//*/a[contains(text(), "Разработчики Автотест")]/..')
-    ORGANIZATION_CHOICE = (By.XPATH, '//ul[@id="ui-id-1"]/li')
-    #ORGANIZATION_CHOICE = (By.XPATH, "//a[contains(text(), 'Разработчики Автотест')]")
+    ORGANIZATION_CHOICE = (By.XPATH, "//ul[@id='ui-id-1']//a[text()='Разработчики Автотест']")
 
     LOGIN_FIELD = (By.XPATH, "//input[@id='logins']")
-    #LOGIN_CHOICE = (By.XPATH, "//a[@id='ui-id-183']")
-    LOGIN_CHOICE = (By.XPATH, '//ul[@id="ui-id-2"]/li')
+    LOGIN_CHOICE = (By.XPATH, "//ul[@id='ui-id-2']/li")
 
     PASSWORD_FIELD = (By.XPATH, "//input[@id='password_input']")
 
     LOGIN_BUTTON = (By.XPATH, "//input[@class='btn_enter']")
+
+    LOGO_LOCATED = (By.XPATH, "//i[@class='mont-promotion-link__icon']")
 
 
 class MainPageLocators(BasePageLocators):
