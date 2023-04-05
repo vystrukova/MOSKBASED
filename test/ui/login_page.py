@@ -1,5 +1,7 @@
 import time
 from selenium.webdriver import Chrome
+
+from main_page import MainPage
 from locators import LoginPageLocators
 from base_page import BasePage
 import info
@@ -55,7 +57,7 @@ class LoginPage(BasePage):
         locator = self.locators.PASSWORD_FIELD
         return self.wait_for_visible(locator, timeout)
 
-    def send_password(self, password_text=info.password_api):
+    def send_password(self, password_text=info.password):
         locator = self.locators.PASSWORD_FIELD
         if self.password_field_located(timeout=1):
             self.send_keys(locator, password_text)
@@ -69,5 +71,24 @@ class LoginPage(BasePage):
     def logo_located(self, timeout):
         locator = self.locators.LOGO_LOCATED
         return self.wait_for_visible(locator, timeout)
+
+    """
+    Авторизация
+    """
+    def login(self):
+        self.browser.get(self.url)
+        self.main_page_is_open(timeout=1)
+        self.organization_field_located(timeout=1)
+        self.send_organization()
+        self.click_organization(timeout=1)
+        self.login_field_located(timeout=1)
+        self.send_login()
+        self.click_login(timeout=1)
+        self.password_field_located(timeout=1)
+        self.send_password()
+        self.click_login_button(timeout=1)
+        self.logo_located(timeout=1)
+        return LoginPage(browser=self.browser)
+
 
 
