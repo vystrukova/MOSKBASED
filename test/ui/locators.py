@@ -22,3 +22,7 @@ class LoginPageLocators(BasePageLocators):
 
 class MainPageLocators(BasePageLocators):
     MAIN_MENU_BLOCK = (By.XPATH, "//div[@class='s-menu__block']")
+
+
+class MontPageLocators(BasePageLocators):
+    pass
