@@ -1,11 +1,11 @@
-login = "Пользователь МОНТ"
-password = "Strukova2022"
+login = "Струкова В"
+password = "Strukova2023!"
 organization = "Разработчики Автотест"
 
-text_login = "Пользователь МОНТ"
+text_login = "Логин"
 
-base_url = "https://mosedo.release136.sedmsk81/"
+url = "https://mosedo.release133.sedmsk81/"
 
-login_api = "76110248"
-password_api = "Strukova2022"
+login_api = "76110320"
+password_api = "Strukova2023!"
 organization_api = "39223722"
