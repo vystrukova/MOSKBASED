@@ -128,6 +128,31 @@ class BasePage:
             time.sleep(0.5)
         return False
 
+    def wait_for_all_visible(self, locator, timeout):
+        """
+        Ждет появления всех элементов, соответствующих локатору на странице
+        :param locator: кортеж локатора в виде (By, value)
+        :param timeout: время ожидания в секундах
+        :return: список элементов, если все элементы появились, None в противном случае
+        """
+        for _ in range(timeout):
+            elements = self.browser.find_elements(*locator)
+            if all([element.is_displayed() for element in elements]):
+                return elements
+            time.sleep(0.5)
+        return None
+
+    def are_all_visible(self, locator):
+        """
+        Проверяет, что все элементы, соответствующие локатору, видимы на странице
+        :param locator: кортеж локатора в виде (By, value)
+        :return: True, если все элементы видимы, False в противном случае
+        """
+        elements = self.browser.find_elements(*locator)
+        for element in elements:
+            if not element.is_displayed():
+                return False
+        return True
 
     def mouse_over(self, locator, timeout=1):
         element = WebDriverWait(self.browser, timeout).until(EC.visibility_of_element_located(locator))
@@ -150,10 +175,6 @@ class BasePage:
             WebDriverWait(self.browser, timeout_for_click).until(EC.element_to_be_clickable(locator)).click()
         else:
             raise TimeoutException
-
-    def key_down(self, element=None):
-        ActionChains(driver).key_down(Keys.DOWN)
-        ActionChains(driver).key_down(Keys.ENTER)
 
     def send_keys(self, locator, text, timeout=5):
         WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(locator))
