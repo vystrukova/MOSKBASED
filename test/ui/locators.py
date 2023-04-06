@@ -25,4 +25,6 @@ class MainPageLocators(BasePageLocators):
 
 
 class MontPageLocators(BasePageLocators):
-    pass
+    MONT_PAGE = (By.XPATH, "//i[@class='mont-promotion-link__icon']")
+    MONT_GENERATOR = (By.XPATH, "//div[@class='login-and-password-generator guide__login-and-password-generator']")
+
