@@ -11,7 +11,7 @@ class LoginPageLocators(BasePageLocators):
     ORGANIZATION_CHOICE = (By.XPATH, "//ul[@id='ui-id-1']//a[text()='Разработчики Автотест']")
 
     LOGIN_FIELD = (By.XPATH, "//input[@id='logins']")
-    LOGIN_CHOICE = (By.XPATH, "//ul[@id='ui-id-2']/li")
+    LOGIN_CHOICE = (By.XPATH, "//ul[@id='ui-id-2']//a[text()='Пользователь МОНТ']")
 
     PASSWORD_FIELD = (By.XPATH, "//input[@id='password_input']")
 

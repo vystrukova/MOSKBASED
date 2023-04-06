@@ -4,8 +4,8 @@ import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from mont_page import MontPage
-from login_page import LoginPage
+from pages.mont_page import MontPage
+from pages.login_page import LoginPage
 
 
 class TestMosedo():

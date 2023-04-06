@@ -6,7 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
-from locators import BasePageLocators
+from utils.locators import BasePageLocators
 
 
 class BasePage:

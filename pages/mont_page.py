@@ -1,18 +1,16 @@
-import time
 from selenium.webdriver import Chrome
 
-from main_page import MainPage
-from login_page import LoginPage
-from base_page import BasePage
-from locators import MontPageLocators
-import info
+from .login_page import LoginPage
+from .base_page import BasePage
+from utils.locators import MontPageLocators
+from utils.info import Info
 
 
 class MontPage(BasePage):
     def __init__(self, browser):
         self.locators = MontPageLocators
         self.browser: Chrome = browser
-        self.url = info.base_url
+        self.url = Info.base_url
         super().__init__(browser)
 
     def open(self):

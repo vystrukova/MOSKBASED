@@ -1,7 +1,7 @@
 import time
 
-from ui.base_page import BasePage
-from ui.locators import MainPageLocators
+from pages.base_page import BasePage
+from utils.locators import MainPageLocators
 from selenium.webdriver import Chrome
 
 

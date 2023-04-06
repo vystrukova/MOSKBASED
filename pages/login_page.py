@@ -1,10 +1,8 @@
-import time
 from selenium.webdriver import Chrome
 
-from main_page import MainPage
-from locators import LoginPageLocators
-from base_page import BasePage
-import info
+from utils.locators import LoginPageLocators
+from .base_page import BasePage
+from utils.info import Info
 
 
 class LoginPage(BasePage):
@@ -12,7 +10,7 @@ class LoginPage(BasePage):
     def __init__(self, browser):
         self.locators = LoginPageLocators
         self.browser: Chrome = browser
-        self.url = info.base_url
+        self.url = Info.base_url
         super().__init__(browser)
 
     def open(self):
@@ -27,7 +25,7 @@ class LoginPage(BasePage):
         locator = self.locators.ORGANIZATION_FIELD
         return self.wait_for_visible(locator, timeout)
 
-    def send_organization(self, login_text=info.organization):
+    def send_organization(self, login_text=Info.organization):
         locator = self.locators.ORGANIZATION_FIELD
         if self.organization_field_located(timeout=1):
             self.send_keys(locator, login_text)
@@ -42,7 +40,7 @@ class LoginPage(BasePage):
         locator = self.locators.LOGIN_FIELD
         return self.wait_for_visible(locator, timeout)
 
-    def send_login(self, login_text=info.login):
+    def send_login(self, login_text=Info.login):
         locator = self.locators.LOGIN_FIELD
         if self.login_field_located(timeout=1):
             self.send_keys(locator, login_text)
@@ -57,7 +55,7 @@ class LoginPage(BasePage):
         locator = self.locators.PASSWORD_FIELD
         return self.wait_for_visible(locator, timeout)
 
-    def send_password(self, password_text=info.password):
+    def send_password(self, password_text=Info.password):
         locator = self.locators.PASSWORD_FIELD
         if self.password_field_located(timeout=1):
             self.send_keys(locator, password_text)
