@@ -131,8 +131,6 @@ class BasePage:
     def wait_for_all_visible(self, locator, timeout):
         """
         Ждет появления всех элементов, соответствующих локатору на странице
-        :param locator: кортеж локатора в виде (By, value)
-        :param timeout: время ожидания в секундах
         :return: список элементов, если все элементы появились, None в противном случае
         """
         for _ in range(timeout):
@@ -145,7 +143,6 @@ class BasePage:
     def are_all_visible(self, locator):
         """
         Проверяет, что все элементы, соответствующие локатору, видимы на странице
-        :param locator: кортеж локатора в виде (By, value)
         :return: True, если все элементы видимы, False в противном случае
         """
         elements = self.browser.find_elements(*locator)
@@ -159,9 +156,6 @@ class BasePage:
         ActionChains(self.browser).move_to_element(element).perform()
 
     def click(self, locator, timeout):
-        #WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(locator))
-        #WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable(locator)).click()
-
         self.mouse_over(locator, timeout)
         WebDriverWait(self.browser, timeout).until(
             EC.element_to_be_clickable(locator)).click()

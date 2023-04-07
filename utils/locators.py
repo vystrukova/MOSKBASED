@@ -31,3 +31,8 @@ class MontPageLocators(BasePageLocators):
     MONT_TIMER = (By.XPATH, "//div[@class='timer']")
     MONT_DATA = (By.XPATH, "//div[@class='digits']//span")
 
+    MONT_CODE_BLOCK = (By.XPATH, "//div[@class='confirmation-code-popup__input-wrapper']")
+    MONT_CODE_INPUT = (By.XPATH, "//input[@class='confirmation-code-popup__input']")
+
+    MONT_LOGINED = (By.XPATH, "")
+
