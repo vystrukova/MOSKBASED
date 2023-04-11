@@ -1,4 +1,4 @@
-from .base_case import BaseCase
+from .base_case import *
 from .capability import capability_select
 # Импортируем здесь все классы страниц, чтобы они были доступны из других модулей
 

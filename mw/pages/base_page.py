@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from appium.webdriver.common.touch_action import TouchAction
 
-from mw.utils import BasePageANDROIDLocators
+from mw.utils import BasePageAndroidLocators
 
 CLICK_RETRY = 3
 BASE_TIMEOUT = 5
@@ -15,7 +15,7 @@ class PageNotLoadedException(Exception):
 
 
 class BasePage(object):
-    locators = BasePageANDROIDLocators()
+    locators = BasePageAndroidLocators()
 
     def __init__(self, driver, config):
         self.driver = driver

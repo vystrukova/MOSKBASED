@@ -8,7 +8,7 @@ from mw.pages.main_page import MainPage
 class BaseCase:
 
     @pytest.fixture(scope='function', autouse=True)
-    def setup(self, driver, config, request: FixtureRequest, ui_report):
+    def setup(self, driver, config, request: FixtureRequest):
         self.driver = driver
         self.config = config
 

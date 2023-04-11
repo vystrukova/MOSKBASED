@@ -2,7 +2,7 @@ import os
 
 
 def capability_select(device_os):
-    if device_os == 'android_code':
+    if device_os == 'android':
         capability = {"platformName": "Android",
                       "platformVersion": "11.0",
                       "automationName": "Appium",
