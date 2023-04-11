@@ -1,5 +1,5 @@
 from .base_page import BasePage
-from android_code.locators.locators_android import MainPageANDROIDLocators
+from mw.utils import MainPageANDROIDLocators
 import allure
 
 

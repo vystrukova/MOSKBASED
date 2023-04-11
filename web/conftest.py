@@ -1,7 +1,6 @@
 import pytest
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
@@ -23,7 +22,6 @@ def browser():
     options.add_argument('--ignore-certificate-errors')
     browser = webdriver.Chrome(chrome_options=options, service=Service(ChromeDriverManager().install()))
 
-    # browser.add_argument('ignore-certificate-errors')
     browser.maximize_window()
     yield browser
     browser.quit()
