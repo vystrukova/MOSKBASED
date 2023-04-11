@@ -3,9 +3,9 @@ import os
 import pytest
 from appium import webdriver
 from mw.pages.base_page import BasePage
-import pages
+from mw.pages.main_page import MainPage
 
-from capability import capability_select
+from .capability import capability_select
 
 
 class UnsupportedBrowserType(Exception):
