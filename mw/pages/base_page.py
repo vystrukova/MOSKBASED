@@ -3,7 +3,8 @@ from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from appium.webdriver.common.touch_action import TouchAction
-from android_code.locators.locators_android import BasePageANDROIDLocators
+
+from mw.utils import BasePageANDROIDLocators
 
 CLICK_RETRY = 3
 BASE_TIMEOUT = 5

@@ -1,8 +1,8 @@
 import pytest
 from _pytest.fixtures import FixtureRequest
 
-from android_code.pages.base_page import BasePage
-from android_code.pages.main_page import MainPage
+from mw.pages.base_page import BasePage
+from mw.pages.main_page import MainPage
 
 
 class BaseCase:

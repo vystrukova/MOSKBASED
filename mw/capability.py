@@ -10,7 +10,7 @@ def capability_select(device_os):
                       "appActivity": "ru.docsystems.mont.SplashActivity",
                       "autoGrantPermissions": "true",
                       "app": os.path.abspath(os.path.join(os.path.dirname(__file__),
-                                                          '../stuff/mont.apk')
+                                                          '../mont_app/mont.apk')
                                              ),
                       "orientation": "PORTRAIT"
                       }

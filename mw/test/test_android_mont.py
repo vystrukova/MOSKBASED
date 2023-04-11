@@ -1,8 +1,8 @@
 import allure
 import pytest
 import os
-from base_case import BaseCase
-from main_page import MainPage
+from mw.base_case import BaseCase
+from mw.pages import MainPage
 from time import sleep
 
 

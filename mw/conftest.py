@@ -1,13 +1,9 @@
 import os
-import shutil
-import sys
 
-import allure
-import appium
 import pytest
 from appium import webdriver
-from android_code.pages.base_page import BasePage
-from android_code import pages
+from mw.pages.base_page import BasePage
+import pages
 
 from capability import capability_select
 
