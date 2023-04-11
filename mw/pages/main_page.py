@@ -1,5 +1,5 @@
 from .base_page import BasePage
-from mw.utils import MainPageANDROIDLocators
+from mw.utils import MainPageAndroidLocators
 import allure
 
 
@@ -8,17 +8,18 @@ class MainPage(BasePage):
     def click_on_skip_button(self):
         pass
 
-    def find_login_activity(self):
+    def check_login_text(self):
         pass
 
 
-class MainPageANDROID(MainPage):
-    locators = MainPageANDROIDLocators()
+class MainPageAndroid(MainPage):
+    locators = MainPageAndroidLocators()
 
-    @allure.step("Clicking on skip button")
+    @allure.step("Нажимаем на кнопку Пропустить")
     def click_on_skip_button(self):
         self.click_for_android(self.locators.SKIP_BUTTON)
 
-    @allure.step("Looking for main activity")
-    def find_login_activity(self):
-        self.find(self.locators.LOGIN_ACTIVITY)
+    @allure.step("Ищем надпись Войти на кнопке")
+    def check_login_text(self):
+        mont_info = self.find(self.locators.LOGIN_BUTTON)
+        return mont_info.text
