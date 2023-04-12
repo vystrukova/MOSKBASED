@@ -9,3 +9,5 @@ class BasePageAndroidLocators:
 class MainPageAndroidLocators(BasePageAndroidLocators):
     SKIP_BUTTON = (AppiumBy.XPATH, "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.view.ViewGroup/android.widget.LinearLayout/android.widget.Button")
     LOGIN_BUTTON = (AppiumBy.ID, "ru.docsystems.mont:id/login_fragment_login_button")
+    LOGIN_FIELD = (AppiumBy.ID, "ru.docsystems.mont:id/login_fragment_login_field")
+    PASSWORD_FIELD = (AppiumBy.ID, "ru.docsystems.mont:id/login_fragment_password_field")

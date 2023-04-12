@@ -1,6 +1,6 @@
 import pytest
 from appium import webdriver
-from mw.pages.base_page import BasePage
+from mw.pages.base_page_mobile import BasePageMobile
 from mw import pages
 
 from .capability import capability_select
@@ -11,13 +11,13 @@ class UnsupportedDeviceOs(Exception):
 
 
 @pytest.fixture
-def base_page(driver, config):
-    return BasePage(driver=driver, config=config)
+def base_page_mobile(driver, config):
+    return BasePageMobile(driver=driver, config=config)
 
 
 @pytest.fixture
-def main_page(driver, config):
-    page = get_page(config['device_os'], 'MainPage')
+def main_page_mobile(driver, config):
+    page = get_page(config['device_os'], 'MainPageMobile')
     return page(driver=driver, config=config)
 
 

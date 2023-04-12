@@ -129,11 +129,13 @@ class BasePage(object):
             time.sleep(0.5)
         return False
 
-    def wait_for_all_visible(self, locator, timeout):
+    def wait_for_all_visible(self, locator, timeout=5):
         """
         Ждет появления всех элементов, соответствующих локатору на странице
         :return: список элементов, если все элементы появились, None в противном случае
         """
+        if timeout is None:
+            timeout = 5
         for _ in range(timeout):
             elements = self.browser.find_elements(*locator)
             if all([element.is_displayed() for element in elements]):

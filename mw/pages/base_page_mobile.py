@@ -1,20 +1,22 @@
 import allure
-from selenium.common.exceptions import StaleElementReferenceException
+from selenium.common.exceptions import StaleElementReferenceException, TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.keys import Keys
 from appium.webdriver.common.touch_action import TouchAction
 
 from mw.utils import BasePageAndroidLocators
 
 CLICK_RETRY = 3
 BASE_TIMEOUT = 5
+SEND_KEYS_RETRY = 1
 
 
 class PageNotLoadedException(Exception):
     pass
 
 
-class BasePage(object):
+class BasePageMobile(object):
     locators = BasePageAndroidLocators()
 
     def __init__(self, driver, config):
@@ -40,6 +42,18 @@ class BasePage(object):
                 return
             except StaleElementReferenceException:
                 if i == CLICK_RETRY - 1:
+                    raise
+
+    def send_keys_for_android(self, locator, keys_to_send, timeout=None):
+        for i in range(SEND_KEYS_RETRY):
+            try:
+                self.find(locator, timeout=timeout)
+                element = self.wait(timeout).until(EC.presence_of_element_located(locator))
+                element.send_keys(keys_to_send)
+                element.send_keys(Keys.ENTER)
+                return
+            except StaleElementReferenceException:
+                if i == SEND_KEYS_RETRY - 1:
                     raise
 
     def swipe_up(self, swipetime=200):
