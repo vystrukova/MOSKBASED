@@ -9,10 +9,11 @@ from selenium.common.exceptions import TimeoutException
 from web.utils import BasePageLocators
 
 
-class BasePage:
+class BasePage(object):
+    locators = BasePageLocators()
+
     def __init__(self, browser: webdriver.Chrome):
         self.browser = browser
-        self.base_locators = BasePageLocators
 
     def return_url(self):
         return self.browser.current_url
