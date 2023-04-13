@@ -56,6 +56,11 @@ class BasePageMobile(object):
                 if i == SEND_KEYS_RETRY - 1:
                     raise
 
+    def get_text_for_android(self, locator, timeout=None):
+        self.wait(timeout).until(EC.presence_of_element_located(locator))
+        element = self.wait(timeout).until(EC.visibility_of_element_located(locator))
+        return element.text
+
     def swipe_up(self, swipetime=200):
         """
         Базовый метод свайпа по вертикали

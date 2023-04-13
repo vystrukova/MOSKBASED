@@ -20,6 +20,9 @@ class MainPageMobile(BasePageMobile):
     def click_login_button(self):
         pass
 
+    def get_confirmation_code(self):
+        pass
+
 
 class MainPageMobileAndroid(MainPageMobile):
     locators = MainPageAndroidLocators()
@@ -48,3 +51,10 @@ class MainPageMobileAndroid(MainPageMobile):
     @allure.step("Нажимаем на кнопку Войти")
     def click_login_button(self):
         self.click_for_android(self.locators.LOGIN_BUTTON)
+
+    @allure.step("Получаем код подтверждения")
+    def get_confirmation_code(self):
+        first_symbol = self.get_text_for_android(self.locators.FIRST_SYMBOL)
+        second_symbol = self.get_text_for_android(self.locators.SECOND_SYMBOL)
+        third_symbol = self.get_text_for_android(self.locators.THIRD_SYMBOL)
+        return first_symbol, second_symbol, third_symbol
