@@ -4,9 +4,9 @@ from mw.base_case import BaseCaseMobile
 from web.base_case import BaseCase
 
 
-@pytest.mark.AndroidUI
 class TestMontAndroid(BaseCaseMobile):
 
+    @pytest.mark.AndroidUI
     def test_skip(self):
         self.mont_page.open_mont_page()
         page = self.mont_page
@@ -40,5 +40,15 @@ class TestMontAndroid(BaseCaseMobile):
 
         with allure.step("Находим окно подтверждения в браузере"):
             assert self.mont_page.mont_is_logined(timeout=3)
+
+        with allure.step("Задаем код-пароль"):
+            self.main_page_mobile.code_password()
+            # self.main_page_mobile.code_password_another()
+        with allure.step("Повторяем код-пароль"):
+            self.main_page_mobile.code_password()
+            # self.main_page_mobile.code_password_another()
+        with allure.step("Находим вкладку Документы"):
+            self.main_page_mobile.check_documents_tab()
+
 
 

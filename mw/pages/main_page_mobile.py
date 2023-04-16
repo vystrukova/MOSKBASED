@@ -1,3 +1,5 @@
+import time
+
 from .base_page_mobile import BasePageMobile
 from mw.utils import MainPageAndroidLocators
 import allure
@@ -21,6 +23,15 @@ class MainPageMobile(BasePageMobile):
         pass
 
     def get_confirmation_code(self):
+        pass
+
+    def code_password(self):
+        pass
+
+    def code_password_another(self):
+        pass
+
+    def check_documents_tab(self):
         pass
 
 
@@ -58,3 +69,32 @@ class MainPageMobileAndroid(MainPageMobile):
         second_symbol = self.get_text_for_android(self.locators.SECOND_SYMBOL)
         third_symbol = self.get_text_for_android(self.locators.THIRD_SYMBOL)
         return first_symbol, second_symbol, third_symbol
+
+    @allure.step("Задаем код-пароль 000000")
+    def code_password(self):
+        for i in range(6):
+            self.find(self.locators.ZERO_BUTTON)
+            self.click_for_android(self.locators.ZERO_BUTTON)
+            time.sleep(0.5)
+
+    @allure.step("Задаем код-пароль 123456")
+    def code_password_another(self):
+        self.find(self.locators.BUTTON_ONE)
+        self.click_for_android(self.locators.BUTTON_ONE)
+        self.find(self.locators.BUTTON_TWO)
+        self.click_for_android(self.locators.BUTTON_TWO)
+        self.find(self.locators.BUTTON_THREE)
+        self.click_for_android(self.locators.BUTTON_THREE)
+        self.find(self.locators.BUTTON_FOUR)
+        self.click_for_android(self.locators.BUTTON_FOUR)
+        self.find(self.locators.BUTTON_FIVE)
+        self.click_for_android(self.locators.BUTTON_FIVE)
+        self.find(self.locators.BUTTON_SIX)
+        self.click_for_android(self.locators.BUTTON_SIX)
+
+
+    @allure.step("Находим вкладку Документы")
+    def check_documents_tab(self):
+        self.find(self.locators.MY_DOCUMENTS)
+
+
