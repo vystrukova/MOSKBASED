@@ -1,5 +1,5 @@
 import allure
-from selenium.common.exceptions import StaleElementReferenceException, TimeoutException
+from selenium.common.exceptions import StaleElementReferenceException, TimeoutException, NoSuchElementException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
@@ -44,6 +44,13 @@ class BasePageMobile(object):
                 if i == CLICK_RETRY - 1:
                     raise
 
+    def is_button_clicked(self, locator):
+        try:
+            button = self.driver.find_element(*locator)
+            return button.get_attribute('enabled') == 'false' and button.get_attribute('selected') == 'true'
+        except NoSuchElementException:
+            return False
+
     def send_keys_for_android(self, locator, keys_to_send, timeout=None):
         for i in range(SEND_KEYS_RETRY):
             try:
@@ -55,6 +62,11 @@ class BasePageMobile(object):
             except StaleElementReferenceException:
                 if i == SEND_KEYS_RETRY - 1:
                     raise
+
+    def get_text_for_android(self, locator, timeout=None):
+        self.wait(timeout).until(EC.presence_of_element_located(locator))
+        element = self.wait(timeout).until(EC.visibility_of_element_located(locator))
+        return element.text
 
     def swipe_up(self, swipetime=200):
         """

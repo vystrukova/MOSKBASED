@@ -77,6 +77,25 @@ class MontPage(BasePage):
             f.write(data)
         print(f"Data written to {file_path} successfully.")
 
+    def send_confirmation_code(self):
+        pass
+
+    def mont_is_logined(self, timeout):
+        locator = self.locators.MONT_LOGINED
+        return self.wait_for_visible(locator, timeout)
+
+    def first_code_field_located(self, timeout):
+        locator = self.locators.MONT_CONFIRMATION_FIRST
+        return self.wait_for_visible(locator, timeout)
+
+    def second_code_field_located(self, timeout):
+        locator = self.locators.MONT_CONFIRMATION_SECOND
+        return self.wait_for_visible(locator, timeout)
+
+    def third_code_field_located(self, timeout):
+        locator = self.locators.MONT_CONFIRMATION_THIRD
+        return self.wait_for_visible(locator, timeout)
+
     """
     Документооборот на смартфоне
     """
