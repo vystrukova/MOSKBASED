@@ -25,7 +25,7 @@ class MainPageLocators(BasePageLocators):
 
 
 class MontPageLocators(BasePageLocators):
-    #MONT_PAGE = (By.XPATH, "//i[@class='mont-promotion-link__icon']")
+    # MONT_PAGE = (By.XPATH, "//i[@class='mont-promotion-link__icon']")
     MONT_PAGE = (By.XPATH, "//span[text()='Документооборот ']")
     MONT_GENERATOR = (By.XPATH, "//div[@class='login-and-password-generator guide__login-and-password-generator']")
     MONT_GENERATE_BUTTON = (By.XPATH, "//button[contains(text(), 'Сгенерировать')]")
@@ -41,3 +41,11 @@ class MontPageLocators(BasePageLocators):
 
     MONT_LOGINED = (By.XPATH, "//div[@class='successful-login__header']")
 
+
+class RezolutionPageLocators(BasePageLocators):
+    BUTTON_FULL_DOCS = (By.XPATH, '//*[@id="menu-category-0"]/div/button/i')
+    BUTTON_NEW_DOCUMENT = (By.XPATH, '//a[@class="attention" and contains(text(), "Новый документ")]')
+    MENU_CATEGORY_0 = (By.ID, "menu-category-0")
+    RKD_BLOCK = (By.XPATH, "//table[@class='card maintable-width scrollable-section']")
+    # FILE_INPUT = (By.XPATH, "//button[contains(text(),'Загрузите файл')]")
+    FILE_INPUT = (By.XPATH, '//input[@type="file"]')

@@ -95,11 +95,12 @@ class BasePage(object):
         element = WebDriverWait(self.browser, timeout).until(EC.visibility_of_element_located(locator))
         return element.get_attribute("value")
 
-    def send_keys(self, locator, text, timeout=2):
+    def attach_file(self, locator, file_path, timeout=2):
         WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(locator))
         element = WebDriverWait(self.browser, timeout).until(EC.visibility_of_element_located(locator))
-        element.clear()
-        element.send_keys(text)
+        element.send_keys(file_path)
+        # Выбрать файл нажатием на клавишу Enter
+        element.send_keys(Keys.ENTER)
 
     def send_enter(self, locator, timeout=2):
         WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(locator))
