@@ -38,7 +38,9 @@ class RezolutionPage(BasePage):
         return self.wait_for_visible(locator, timeout)
 
     def attach_file_to_doc(self):
-        file_path = os.path.join(os.path.dirname(__file__), 'data', 'test.docx')
+        file_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                                 '../../data/test.docx')
+                                    ),
         locator = self.locators.FILE_INPUT
         self.attach_file(locator, file_path)
 

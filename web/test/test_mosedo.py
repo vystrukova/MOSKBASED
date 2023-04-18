@@ -31,5 +31,6 @@ class TestMosedo(BaseCase):
         with allure.step("Создание документа"):
             assert page.rkd_block_located(timeout=5)
         page.attach_file_to_doc()
+        breakpoint()
 
 
