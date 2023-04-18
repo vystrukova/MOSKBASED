@@ -34,6 +34,9 @@ class MainPageMobile(BasePageMobile):
     def check_documents_tab(self):
         pass
 
+    def use_only_code(self):
+        pass
+
 
 class MainPageMobileAndroid(MainPageMobile):
     locators = MainPageAndroidLocators()
@@ -77,21 +80,10 @@ class MainPageMobileAndroid(MainPageMobile):
             self.click_for_android(self.locators.ZERO_BUTTON)
             time.sleep(0.5)
 
-    @allure.step("Задаем код-пароль 123456")
-    def code_password_another(self):
-        self.find(self.locators.BUTTON_ONE)
-        self.click_for_android(self.locators.BUTTON_ONE)
-        self.find(self.locators.BUTTON_TWO)
-        self.click_for_android(self.locators.BUTTON_TWO)
-        self.find(self.locators.BUTTON_THREE)
-        self.click_for_android(self.locators.BUTTON_THREE)
-        self.find(self.locators.BUTTON_FOUR)
-        self.click_for_android(self.locators.BUTTON_FOUR)
-        self.find(self.locators.BUTTON_FIVE)
-        self.click_for_android(self.locators.BUTTON_FIVE)
-        self.find(self.locators.BUTTON_SIX)
-        self.click_for_android(self.locators.BUTTON_SIX)
-
+    @allure.step("Использовать только код-пароль")
+    def use_only_code(self):
+        self.find(self.locators.BUTTON_ONLY_CODE)
+        self.click_for_android(self.locators.BUTTON_ONLY_CODE)
 
     @allure.step("Находим вкладку Документы")
     def check_documents_tab(self):

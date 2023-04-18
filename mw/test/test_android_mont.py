@@ -43,10 +43,12 @@ class TestMontAndroid(BaseCaseMobile):
 
         with allure.step("Задаем код-пароль"):
             self.main_page_mobile.code_password()
-            # self.main_page_mobile.code_password_another()
         with allure.step("Повторяем код-пароль"):
             self.main_page_mobile.code_password()
-            # self.main_page_mobile.code_password_another()
+
+            # закомментировать для эмулятора
+            self.main_page_mobile.use_only_code()
+
         with allure.step("Находим вкладку Документы"):
             self.main_page_mobile.check_documents_tab()
 
