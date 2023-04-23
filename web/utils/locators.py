@@ -49,3 +49,20 @@ class RezolutionPageLocators(BasePageLocators):
     RKD_BLOCK = (By.XPATH, "//table[@class='card maintable-width scrollable-section']")
     # FILE_INPUT = (By.XPATH, "//button[contains(text(),'Загрузите файл')]")
     FILE_INPUT = (By.XPATH, '//input[@type="file"]')
+
+    NEW_DOCUMENT_NUMBER = (By.XPATH, "//td[@class='b fixedWidth word-break']//input[@name='num']")
+    NEW_DOCUMENT_USER_DESTINATION = (By.XPATH, "//input[@id='inp_g_su_r_0']")
+    NEW_DOCUMENT_USER_SELECT = (By.XPATH, "//div[@class='sg-div__dropdown ']//div[@title='Должность: Тестировщик']")
+
+    NEW_DOCUMENT_USER_FROM = (By.XPATH, "//input[@class='text select-user-field']")
+    NEW_DOCUMENT_FROM_SELECT = (By.XPATH, "//div[@class='sg-div__dropdown ']//div[@class='sg-fio connected'])[1]")
+
+    NEW_DOCUMENT_SHORT_CONTENT = (By.XPATH, "//textarea[@id='short_content']")
+    NEW_DOCUMENT_THEME_FIRST = (By.XPATH, "//select[@class='og-classifier-theme__select'][1]")
+    NEW_DOCUMENT_ECONOMY_THEME = (By.XPATH, "//div[@class='og-classifier-theme__item' and @searchtext='Химико-технологический и лесопромышленный комплекс']")
+
+    BUTTON_SUBMIT_VIEW = (By.XPATH, "//input[@value='Сохр. + просмотр']")
+
+
+
+
