@@ -4,10 +4,11 @@ import os
 def capability_select(device_os):
     if device_os == 'android':
         capability = {"platformName": "Android",
-                      "platformVersion": "11.0",
+                      # "platformVersion": "12.0",
+                      "platformVersion": "13.0",
                       "automationName": "Appium",
                       "appPackage": "ru.docsystems.mont",
-                      "appActivity": "ru.docsystems.mont.SplashActivity",
+                      "appActivity": "crc6498dd37eeebdfe7a1.SplashActivity",
                       "autoGrantPermissions": "true",
                       "app": os.path.abspath(os.path.join(os.path.dirname(__file__),
                                                           '../mont_app/mont.apk')

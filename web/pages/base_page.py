@@ -9,10 +9,11 @@ from selenium.common.exceptions import TimeoutException
 from web.utils import BasePageLocators
 
 
-class BasePage:
+class BasePage(object):
+    locators = BasePageLocators()
+
     def __init__(self, browser: webdriver.Chrome):
         self.browser = browser
-        self.base_locators = BasePageLocators
 
     def return_url(self):
         return self.browser.current_url
@@ -94,11 +95,13 @@ class BasePage:
         element = WebDriverWait(self.browser, timeout).until(EC.visibility_of_element_located(locator))
         return element.get_attribute("value")
 
-    def send_keys(self, locator, text, timeout=2):
-        WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(locator))
-        element = WebDriverWait(self.browser, timeout).until(EC.visibility_of_element_located(locator))
-        element.clear()
-        element.send_keys(text)
+    def attach_file(self, locator, file_path, timeout=2):
+        element = self.browser.find_element(*locator)
+        self.browser.execute_script("arguments[0].style.display = 'block';", element)
+        element.send_keys(file_path)
+        # Выбрать файл нажатием на клавишу Enter
+        #element.send_keys(Keys.ENTER)
+        self.browser.execute_script("arguments[0].style.display = 'none';", element)
 
     def send_enter(self, locator, timeout=2):
         WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(locator))
@@ -128,11 +131,13 @@ class BasePage:
             time.sleep(0.5)
         return False
 
-    def wait_for_all_visible(self, locator, timeout):
+    def wait_for_all_visible(self, locator, timeout=5):
         """
         Ждет появления всех элементов, соответствующих локатору на странице
         :return: список элементов, если все элементы появились, None в противном случае
         """
+        if timeout is None:
+            timeout = 5
         for _ in range(timeout):
             elements = self.browser.find_elements(*locator)
             if all([element.is_displayed() for element in elements]):
