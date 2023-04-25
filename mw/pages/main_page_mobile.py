@@ -31,7 +31,7 @@ class MainPageMobile(BasePageMobile):
     def code_password_another(self):
         pass
 
-    def check_documents_tab(self):
+    def check_documents_tab(self, timeout):
         pass
 
     def use_only_code(self):
@@ -86,7 +86,8 @@ class MainPageMobileAndroid(MainPageMobile):
         self.click_for_android(self.locators.BUTTON_ONLY_CODE)
 
     @allure.step("Находим вкладку Документы")
-    def check_documents_tab(self):
-        self.find(self.locators.MY_DOCUMENTS)
+    def check_documents_tab(self, timeout):
+        documents_tab = self.locators.MY_DOCUMENTS
+        return self.find(documents_tab)
 
 
