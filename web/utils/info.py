@@ -7,3 +7,7 @@ class Info:
     text_login = "Логин"
 
     base_url = "https://mosedo.mos.ru/"
+    # base_url = "https://mosedo.release136.sedmsk81/"
+
+
+    theme = "Химико-технологический и лесопромышленный комплекс"

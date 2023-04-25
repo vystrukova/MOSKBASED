@@ -7,16 +7,17 @@ from web.base_case import BaseCase
 class TestMontAndroid(BaseCaseMobile):
 
     @pytest.mark.AndroidUI
-    def test_skip(self):
+    def test_autorization_mont(self):
+
         self.mont_page.open_mont_page()
         page = self.mont_page
         with allure.step("Документооборот на смартфоне"):
             page.mont_generator_located(timeout=5)
-        first_half, second_half = self.mont_page.split_mont_data_values(timeout=5)
+            first_half, second_half = self.mont_page.split_mont_data_values(timeout=5)
 
-        self.main_page_mobile.click_on_skip_button()
-        login_button_text = self.main_page_mobile.check_login_text()
         with allure.step("Нажимаем кнопку Пропустить"):
+            self.main_page_mobile.click_on_skip_button()
+            login_button_text = self.main_page_mobile.check_login_text()
             assert 'Войти' in login_button_text
 
         with allure.step("Вводим логин и пароль"):
@@ -43,12 +44,14 @@ class TestMontAndroid(BaseCaseMobile):
 
         with allure.step("Задаем код-пароль"):
             self.main_page_mobile.code_password()
-            # self.main_page_mobile.code_password_another()
         with allure.step("Повторяем код-пароль"):
             self.main_page_mobile.code_password()
-            # self.main_page_mobile.code_password_another()
+
+            '''закомментировать для эмулятора'''
+            # self.main_page_mobile.use_only_code()
+
         with allure.step("Находим вкладку Документы"):
-            self.main_page_mobile.check_documents_tab()
+            assert self.main_page_mobile.check_documents_tab(timeout=3)
 
 
 
