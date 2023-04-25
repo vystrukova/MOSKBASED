@@ -7,6 +7,7 @@ from web.base_case import BaseCase
 class TestMontAndroid(BaseCaseMobile):
 
     @pytest.mark.AndroidUI
+    # def test_autorization_mont(self):
     def test_skip(self):
         self.mont_page.open_mont_page()
         page = self.mont_page
