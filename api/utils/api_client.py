@@ -8,6 +8,10 @@ class ApiClient:
         return requests.post(url, data, json, **kwargs)
 
     @classmethod
+    def post_request_mont(cls, url, **kwargs):
+        return requests.post(url, **kwargs)
+
+    @classmethod
     def get_request(cls, url, params=None, **kwargs):
         return requests.get(url, params, **kwargs)
 
