@@ -14,3 +14,14 @@ def generate_user() -> dict:
         "password": Info.password
     }
     return user_info
+
+
+@pytest.fixture(scope="function")
+def autorized_client():
+    # авторизуемся
+    user_info = generate_user()
+    response, dnsid = SedApi.autorization_user(user_info)
+    assert response.status_code == 200, f"Не удалось авторизоваться. Response status code: {response.status_code}"
+    assert dnsid is not None, "DNSID не получен после авторизации"
+
+    yield response, dnsid

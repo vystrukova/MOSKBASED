@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  test-runner:
+    build: .
+    command: ["pytest", "test/test_mosedo_api.py"]
+    volumes:
+      - ./api:/api
+    environment:
+      PYTHONPATH: /api/utils
