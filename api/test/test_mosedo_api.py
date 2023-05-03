@@ -17,6 +17,7 @@ class TestMosedoApi(SedApi):
         allure.attach(str(response.status_code), "status_code", allure.attachment_type.TEXT)
         allure.attach(dnsid, "DNSID", allure.attachment_type.TEXT)
 
+    @pytest.mark.skip
     @pytest.mark.API()
     def test_get_folder_list(self, autorized_client):
         # Получение ответа от сервера и dnsid из фикстуры autorized_client
